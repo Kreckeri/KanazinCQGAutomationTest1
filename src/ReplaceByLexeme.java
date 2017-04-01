@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ReplaceByLexeme {
-    private ArrayList<String> lexeme;
-    private ArrayList<String> text;
+    private ArrayList<String> lexeme; //список конфигураций
+    private ArrayList<String> text; //список строк текстового файла
 
     public ReplaceByLexeme() {
         this.lexeme = new ArrayList<>();
@@ -20,7 +20,10 @@ public class ReplaceByLexeme {
         return text;
     }
 
-    public void setFromFile(String filename, ArrayList<String> arrayList) throws FileNotFoundException {
+
+    /*Чтение строк из файла*/
+    public void setFromFile(String filename, ArrayList<String> arrayList) throws FileNotFoundException
+    {
         try {
             Scanner scanner = new Scanner(new FileReader(filename));
             while (scanner.hasNext()) {
@@ -33,6 +36,7 @@ public class ReplaceByLexeme {
         }
     }
 
+    /*Замена символов текстового файла*/
     public void replaceText() throws SyntaxException {
         int errorIndex = 1;
         for (String lexem : lexeme) {
@@ -52,6 +56,7 @@ public class ReplaceByLexeme {
         }
     }
 
+    /*Построчная запись текста в файл*/
     public void writeFile (String filename) throws IOException {
         try
         {
